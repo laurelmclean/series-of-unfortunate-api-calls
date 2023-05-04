@@ -1,8 +1,8 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
 
-const Quote = require('../models/quote')
-const Character = require('../models/character')
+const Quote = require('../models/quote');
+const Character = require('../models/character');
 
 /** Route to get all quotes. */
 router.get('/', (req, res) => {
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         .catch((err) => {
             throw err.quote
         });
-})
+});
 
 /** Route to get one quote by id. */
 router.get('/:quoteId', (req, res) => {
@@ -23,7 +23,7 @@ router.get('/:quoteId', (req, res) => {
         .catch(err => {
             throw err.quote
         })
-})
+});
 
 /** Route to add a new quote. */
 router.post('/', (req, res) => {
@@ -47,8 +47,8 @@ router.post('/', (req, res) => {
 /** Route to update an existing quote. */
 
 router.put('/:quoteId', (req, res) => {
-    const { body } = req.body;
-    Quote.findByIdAndUpdate(req.params.quoteId, { body }, { new: true })
+    const { text } = req.body;
+    Quote.findByIdAndUpdate(req.params.quoteId, { text }, { new: true })
         .then((updatedQuote) => {
             return res.json({ quote: updatedQuote });
         })
@@ -68,6 +68,6 @@ router.delete('/:quoteId', (req, res) => {
         .catch((err) => {
             throw err.quote
         })
-})
+});
 
 module.exports = router;
