@@ -6,7 +6,7 @@ With the "Series of Unfortunate API Calls", developers can retrieve detailed pro
 
 Additionally, the API offers a vast collection of quotes from the books, capturing the clever wordplay, dark humor, and philosophical musings that make the series so distinctive. Developers can access quotes by specific characters, providing ample material to add a touch of the series' charm to their applications or creative endeavors.
 
-The "Series of Unfortunate API Calls" provides a seamless and intuitive interface, offering various endpoints to retrieve character profiles, search for specific quotes, or discover quotes based on different criteria. The API documentation provides clear guidelines on how to make API calls, including necessary parameters and response formats, enabling developers to easily integrate the characters and quotes into their projects.
+The "Series of Unfortunate API Calls" provides a seamless and intuitive interface, offering various endpoints to retrieve character profiles, search for specific quotes, or discover quotes based on character. The API documentation provides clear guidelines on how to make API calls, including necessary parameters and response formats, enabling developers to easily integrate the characters and quotes into their projects.
 
 Whether you're building a fan site, developing a game, or simply seeking to engage with the Series of Unfortunate Events universe, the "Series of Unfortunate API Calls" serves as the ideal resource to bring the characters and quotes to life in your application, allowing users to immerse themselves in the captivating world of unfortunate events.
 
@@ -23,12 +23,13 @@ Whether you're building a fan site, developing a game, or simply seeking to enga
 ## Features
 
 - Retrieve quotes from the Series of Unfortunate Events books
-- Authenticated users can perform CRUD operations (Create, Reada, Update, and Destroy) on characters and their quotes
+- Authenticated users can perform CRUD operations (Create, Read, Update, and Destroy) on characters and their quotes
 - Comprehensive API documentation
-- Deployed and fully accessible
 - Developed using a Test Driven Development Approach
 
-## Getting Started
+## API Documentation
+
+### Getting Started
 
 These instructions will help you set up and run the Series of Unfortunate API Calls on your local machine for development and testing purposes.
 
@@ -38,8 +39,6 @@ These instructions will help you set up and run the Series of Unfortunate API Ca
 - npm (v6.x or higher)
 - MongoDB
 - Git
-
-## API Documentation
 
 ### Installation
 
@@ -61,6 +60,56 @@ These instructions will help you set up and run the Series of Unfortunate API Ca
 ### Usage
 
 The API provides the following endpoints for retrieving characters and quotes:
+
+### Authentication
+
+#### Sign Up
+- Endpoint: /auth/sign-up
+- Method: POST
+- Description: Creates a new user account.
+
+Request Parameters
+```json
+{
+  "username": "The username for the new account. Must be unique.",
+  "password": "The password for the new account."
+}
+
+```
+
+#### Login
+- Endpoint: /auth/login
+- Method: POST
+- Description: Authenticates a user and generates an authentication token.
+
+Request Parameters
+
+```json
+{
+  "username": "The username to authenticate.",
+  "password": "The password to authenticate."
+}
+
+```
+
+#### Logout
+- Endpoint: /auth/logout
+- Method: GET
+- Description: Logs out the currently authenticated user and invalidates the authentication token.
+
+#### Accessing Protected Routes
+To access protected routes, you need to include the nToken cookie in your requests. This cookie contains the authentication token generated during login.
+
+Make sure to include the nToken cookie in the headers of each request that requires authentication. For example:
+
+```
+GET /protected-route
+Cookie: nToken=<authentication_token>
+```
+
+If the authentication token is valid, you will be granted access to the protected route. Otherwise, you will receive a 401 Unauthorized response.
+
+Please note that the authentication token has an expiration time. If the token expires, you will need to re-authenticate by logging in again.
 
 ### Quotes
 
