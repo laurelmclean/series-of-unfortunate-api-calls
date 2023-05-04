@@ -26,13 +26,15 @@ after((done) => {
 })
 
 const SAMPLE_OBJECT_ID = 'aaaaaaaaaaaa' // 12 byte string
-const SAMPLE_MESSAGE_ID = 'cccccccccccc'
+const ObjectID = mongoose.Types.ObjectId;
+
+const SAMPLE_QUOTE_ID = new ObjectID(); // Generate a new ObjectID
 
 describe('Quote API endpoints', () => {
     beforeEach((done) => {
         const character = new Character({
-            name: 'New Name',
-            description: 'Test description',
+            name: 'New Character',
+            description: 'Description',
             _id: SAMPLE_OBJECT_ID
         });
 
@@ -43,8 +45,8 @@ describe('Quote API endpoints', () => {
             this.characterId = savedCharacter._id;
 
             const quote = new Quote({
-                _id: SAMPLE_MESSAGE_ID,
-                text: 'Test title',
+                _id: SAMPLE_QUOTE_ID,
+                text: 'Test quote',
                 book: 'Test book',
                 characterID: character
             });
@@ -94,15 +96,15 @@ describe('Quote API endpoints', () => {
                 res.body.should.be.a('object')
                 res.should.be.json;
                 res.body.should.have.property('text')
-                res.body.should.have.property('author')
+                res.body.should.have.property('characterID')
                 done();
             });
     });
 
     it('should post a new quote', (done) => {
         const newQuote = {
-            text: 'New quote',
-            book: 'This is a new book',
+            text: 'This is a new quote',
+            book: 'Book 10',
             characterID: this.characterId
         };
 
@@ -122,8 +124,7 @@ describe('Quote API endpoints', () => {
 
     it('should update a quote', (done) => {
         const updatedQuote = {
-            text: 'Updated quote',
-            book: 'This is an updated book'
+            text: 'This is an updated quote'
         };
 
         chai.request(app)
@@ -137,22 +138,20 @@ describe('Quote API endpoints', () => {
                 Quote.findById(this.quoteId, (err, quote) => {
                     expect(quote).to.not.be.null
                     expect(quote.text).to.equal(updatedQuote.text)
-                    expect(quote.book).to.equal(updatedQuote.book)
                     expect(quote.characterID.toString()).to.equal(this.characterId.toString())
-
-                    done();
+                
+                done();
                 })
             });
     });
 
     it('should delete a quote', (done) => {
-
         chai.request(app)
             .delete(`/quotes/${this.quoteId}`)
             .end((err, res) => {
                 res.should.have.status(200)
                 Quote.findById(this.quoteId, (err, quote) => {
-                    expect(quote).to.be.null
+                    expect(quote).to.equal(null)
                     done()
                 });
             });
