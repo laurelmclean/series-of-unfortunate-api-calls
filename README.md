@@ -14,10 +14,11 @@ Whether you're building a fan site, developing a game, or simply seeking to enga
 ## Table of Contents
 
 - [Features](#features)
+- [API Documentation](#api-documentation)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Documentation](#api-documentation)
+
 
 ## Features
 
@@ -35,10 +36,12 @@ These instructions will help you set up and run the Series of Unfortunate API Ca
 
 - Node.js (v14.x or higher)
 - npm (v6.x or higher)
-- MongoDB Atlas account
+- MongoDB
 - Git
 
-## Installation
+## API Documentation
+
+### Installation
 
 1. Clone the repository:
    ```bash
@@ -57,8 +60,72 @@ These instructions will help you set up and run the Series of Unfortunate API Ca
 
 ### Usage
 
-Refer to the API Documentation for detailed information on the API endpoints and how to use them.
+The API provides the following endpoints for retrieving characters and quotes:
 
-### API Documentation
+### Quotes
 
-The Series of Unfortunate API Calls API documentation is generated using Docsify and hosted on GitHub Pages. Visit the API Documentation for a comprehensive guide on how to use the API.
+- `GET /quotes`: Get all quotes.
+- `GET /quotes/{quoteId}`: Get a specific quote by ID.
+- `POST /quotes`: Add a new quote.
+- `PUT /quotes/{quoteId}`: Update an existing quote.
+- `DELETE /quotes/{quoteId}`: Delete a quote.
+
+#### Add a new quote
+
+To add a new quote, make a `POST` request to `/quotes` with the following request body:
+
+```json
+{
+  "text": "The quote text goes here",
+  "book": "The book title goes here",
+  "characterID": "The ID of the associated character"
+}
+
+```
+
+Ensure that you provide the required fields in the request body: text, book, and characterID. Upon successful creation, the API will return the newly created quote.
+
+#### Update a quote
+
+To update an existing quote, make a PUT request to /quotes/{quoteId} with the following request body:
+
+```json
+{
+  "text": "The updated quote text goes here",
+  "book": "The updated book title goes here"
+}
+```
+
+Provide the updated values for the fields you want to change: text and book. The API will return the updated quote upon successful update.
+
+### Characters
+
+- `GET /characters`: Get all characters.
+- `GET /characters/{characterId}`: Get a specific character by ID.
+- `POST /characters`: Add a new character.
+- `PUT /characters/{characterId}`: Update an existing character.
+- `DELETE /characters/{characterId}`: Delete a character.
+
+#### Add a new character
+
+To add a new character, make a POST request to /characters with the following request body:
+
+```json
+{
+  "name": "The character name goes here",
+  "description": "The character description goes here"
+}
+```
+
+Ensure that you provide the required fields in the request body: name and description. The API will return the newly created character.
+
+#### Update an existing character
+
+To update an existing character, make a PUT request to /characters/{characterId} with the following request body:
+
+```json
+{
+  "name": "The updated character name goes here",
+  "description": "The updated character description goes here"
+}
+```
