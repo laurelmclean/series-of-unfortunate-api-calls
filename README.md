@@ -25,7 +25,7 @@ Whether you're building a fan site, developing a game, or simply seeking to enga
 - Retrieve quotes from the Series of Unfortunate Events books
 - Authenticated users can perform CRUD operations (Create, Read, Update, and Destroy) on characters and their quotes
 - Comprehensive API documentation
-- Developed using a Test Driven Development Approach
+- Developed using a Test Driven Development Approach (tests in place for quote, character, and user routes)
 
 ## API Documentation
 
@@ -54,7 +54,10 @@ These instructions will help you set up and run the Series of Unfortunate API Ca
 
     ```MONGODB_URI=YOUR_MONGODB_CONNECTION_STRING```
 
-4. Run the development server:
+4. Seed the database:
+    ```node seed.js```
+
+5. Run the development server:
     ```npm start```
 
 ### Usage
