@@ -107,20 +107,6 @@ Request Parameters
 
 ![users](../users.png)
 
-#### Accessing Protected Routes
-To access protected routes, you need to include the nToken cookie in your requests. This cookie contains the authentication token generated during login.
-
-Make sure to include the nToken cookie in the headers of each request that requires authentication. For example:
-
-```
-GET /protected-route
-Cookie: nToken=<authentication_token>
-```
-
-If the authentication token is valid, you will be granted access to the protected route. Otherwise, you will receive a 401 Unauthorized response.
-
-Please note that the authentication token has an expiration time. If the token expires, you will need to re-authenticate by logging in again.
-
 ### Quotes
 
 - `GET /quotes`: Get all quotes.
