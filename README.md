@@ -29,6 +29,8 @@ Whether you're building a fan site, developing a game, or simply seeking to enga
 
 ## API Documentation
 
+https://laurelmclean.github.io/series-of-unfortunate-api-calls/
+
 ### Getting Started
 
 These instructions will help you set up and run the Series of Unfortunate API Calls on your local machine for development and testing purposes.
