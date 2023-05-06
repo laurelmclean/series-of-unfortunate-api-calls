@@ -29,7 +29,7 @@ Whether you're building a fan site, developing a game, or simply seeking to enga
 
 ## API Documentation
 
-https://laurelmclean.github.io/series-of-unfortunate-api-calls/
+View on Docsify: https://laurelmclean.github.io/series-of-unfortunate-api-calls/
 
 ### Getting Started
 
@@ -102,6 +102,13 @@ Request Parameters
 - Method: GET
 - Description: Logs out the currently authenticated user and invalidates the authentication token.
 
+#### Users
+- Endpoint: /auth/users
+- Method: GET
+- Description: Displays all registered users.
+
+![users](users.png)
+
 #### Accessing Protected Routes
 To access protected routes, you need to include the nToken cookie in your requests. This cookie contains the authentication token generated during login.
 
@@ -139,6 +146,8 @@ To add a new quote, make a `POST` request to `/quotes` with the following reques
 
 Ensure that you provide the required fields in the request body: text, book, and characterID. Upon successful creation, the API will return the newly created quote.
 
+![post-quotes](post-quotes.png)
+
 #### Update a quote
 
 To update an existing quote, make a PUT request to /quotes/{quoteId} with the following request body:
@@ -160,6 +169,8 @@ Provide the updated values for the fields you want to change: text and book. The
 - `PUT /characters/{characterId}`: Update an existing character.
 - `DELETE /characters/{characterId}`: Delete a character.
 
+![characters](characters.png)
+
 #### Add a new character
 
 To add a new character, make a POST request to /characters with the following request body:
@@ -172,6 +183,8 @@ To add a new character, make a POST request to /characters with the following re
 ```
 
 Ensure that you provide the required fields in the request body: name and description. The API will return the newly created character.
+
+![post-characters](post-characters.png)
 
 #### Update an existing character
 
