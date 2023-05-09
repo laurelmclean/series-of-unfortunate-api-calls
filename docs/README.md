@@ -105,7 +105,7 @@ Request Parameters
 - Method: GET
 - Description: Displays all registered users.
 
-![users](../users.png)
+![users](./images/users.png)
 
 ### Quotes
 
@@ -130,7 +130,7 @@ To add a new quote, make a `POST` request to `/quotes` with the following reques
 
 Ensure that you provide the required fields in the request body: text, book, and characterID. Upon successful creation, the API will return the newly created quote.
 
-![post-quotes](../post-quotes.png)
+![post-quotes](./images//post-quotes.png)
 
 #### Update a quote
 
@@ -157,7 +157,7 @@ To delete an existing quote, make a DELETE request to /quotes/{quoteId}. The API
 - `PUT /characters/{characterId}`: Update an existing character.
 - `DELETE /characters/{characterId}`: Delete a character.
 
-![characters](../characters.png)
+![characters](./images//characters.png)
 
 #### Add a new character
 
@@ -172,7 +172,7 @@ To add a new character, make a POST request to /characters with the following re
 
 Ensure that you provide the required fields in the request body: name and description. The API will return the newly created character.
 
-![post-characters](../post-characters.png)
+![post-characters](./images/post-characters.png)
 
 #### Update an existing character
 
