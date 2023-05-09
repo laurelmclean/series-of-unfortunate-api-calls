@@ -145,6 +145,10 @@ To update an existing quote, make a PUT request to /quotes/{quoteId} with the fo
 
 Provide the updated values for the fields you want to change: text and book. The API will return the updated quote upon successful update.
 
+#### Delete a quote
+
+To delete an existing quote, make a DELETE request to /quotes/{quoteId}. The API will delete the quote at that ID. 
+
 ### Characters
 
 - `GET /characters`: Get all characters.
@@ -180,3 +184,6 @@ To update an existing character, make a PUT request to /characters/{characterId}
   "description": "The updated character description goes here"
 }
 ```
+#### Delete a character
+
+To delete an existing character, make a DELETE request to /characters/{characterId}. The API will delete the character with that ID. 
